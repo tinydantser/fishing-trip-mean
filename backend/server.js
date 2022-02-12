@@ -3,6 +3,7 @@ const dotenv = require('dotenv').config()
 const colors = require('colors')
 const connectDB = require('./config/db')
 const { errorHandler } = require('./middleware/errorMiddleware')
+const path = require('path'); 
 
 connectDB()
 
@@ -15,6 +16,8 @@ app.use(express.urlencoded({ extended: false}))
 
 app.use('/api/catches', require('./routes/catchRoutes'))
 app.use('/api/users', require('./routes/userRoutes'))
+
+app.use('/', express.static(path.resolve(__dirname, "../fishing-trip-app/dist/fishing-trip-app")));
 
 app.use(errorHandler)
 
