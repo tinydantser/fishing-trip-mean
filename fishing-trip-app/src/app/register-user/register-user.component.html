@@ -1,0 +1,33 @@
+<section>
+    <div fxLayout="row" fxLayoutAlign="center">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="center" 
+            fxLayoutGap="10" 
+            [class.mat-elevation-z2]="true"
+            class="my-container"
+        >
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" formControlName="name" required placeholder="name"/>
+                <mat-error *ngIf="nameControl.invalid">Name is required. I suggest dumbass.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" required/>
+                <mat-error *ngIf="emailControl.invalid">Email is required...unfortunately.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password" required/>
+                <mat-error *ngIf="passwordControl.invalid">Password is required...cmon man</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Beer of Choice</mat-label>
+                <input matInput type="text" formControlName="beer" />
+            </mat-form-field>
+            <mat-checkbox formControlName="acknowledgement" required>
+                I acknowledge that by submitting this form I admit to being a liar.
+            </mat-checkbox>
+            <button type="submit" mat-raised-button color="accent" class="my-min-content">Submit</button>
+        </form>
+    </div>
+</section>

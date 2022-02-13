@@ -1,0 +1,31 @@
+<header>
+    <nav>
+        <mat-toolbar color="primary">
+            <ng-container *ngIf="loggedIn; else loggedOutTmp">
+                <button mat-button routerLink="/leaderboard">Leaderboard</button>
+                <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+                    <button mat-button routerLink="/out-fishing">Out Fishing</button>
+                    <button mat-button>Tackle & Bait</button>
+                    <button mat-button>History</button>
+                    <button mat-button routerLink="/admin">Admin</button>
+                    <button type="button" mat-button (click)="toggleLogin()">Toggle Login</button>
+                </div>
+                <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </ng-container>
+            <mat-menu x-position="before" #menu="matMenu">
+                <button mat-menu-item routerLink="/out-fishing">Out Fishing</button>
+                <button mat-menu-item>Tackle & Bait</button>
+                <button mat-menu-item>History</button>
+                <button mat-button routerLink="/admin">Admin</button>
+            </mat-menu>
+
+            <ng-template #loggedOutTmp>
+                <button type="button" mat-button routerLink="/login">Login</button>
+                <button type="button" mat-button routerLink="/register">Register</button>
+                <button type="button" mat-button (click)="toggleLogin()">Toggle Login</button>
+            </ng-template>
+        </mat-toolbar>
+    </nav>
+</header>
